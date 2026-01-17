@@ -38,7 +38,7 @@ const DataSimulation = () => {
     }, 200);
 
     return () => clearInterval(interval);
-  }, [activeStep]);
+  }, [activeStep, showGraphs]);
 
   useEffect(() => {
     if (showGraphs && graphProgress < 100) {
