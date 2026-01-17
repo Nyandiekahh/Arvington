@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import Preloader from './components/Preloader';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import ServicesPage from './pages/ServicesPage';
@@ -22,24 +23,33 @@ function ScrollToTop() {
 }
 
 function App() {
+  const [loading, setLoading] = useState(true);
+
+  const handleLoadingComplete = () => {
+    setLoading(false);
+  };
+
   return (
-    <Router>
-      <ScrollToTop />
-      <div className="App">
-        <Header />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/services" element={<ServicesPage />} />
-          <Route path="/expertise" element={<ExpertisePage />} />
-          <Route path="/insights" element={<InsightsPage />} />
-          <Route path="/resources" element={<ResourcesPage />} />
-          <Route path="/leadership" element={<LeadershipPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-        </Routes>
-        <Footer />
-      </div>
-    </Router>
+    <>
+      {loading && <Preloader onLoadingComplete={handleLoadingComplete} />}
+      <Router>
+        <ScrollToTop />
+        <div className="App" style={{ visibility: loading ? 'hidden' : 'visible' }}>
+          <Header />
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/services" element={<ServicesPage />} />
+            <Route path="/expertise" element={<ExpertisePage />} />
+            <Route path="/insights" element={<InsightsPage />} />
+            <Route path="/resources" element={<ResourcesPage />} />
+            <Route path="/leadership" element={<LeadershipPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+          </Routes>
+          <Footer />
+        </div>
+      </Router>
+    </>
   );
 }
 

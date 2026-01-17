@@ -1,8 +1,46 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, TrendingUp } from 'lucide-react';
 
 const Hero = () => {
+  const [typewriterText, setTypewriterText] = useState('');
+  const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  const phrases = [
+    'Strategic Planning',
+    'Data-Driven Policy',
+    'Technoeconomic Analysis',
+    'Impact Evaluation',
+    'Evidence-Based Solutions',
+  ];
+
+  useEffect(() => {
+    const currentPhrase = phrases[currentPhraseIndex];
+    const typingSpeed = isDeleting ? 50 : 100;
+    const pauseTime = isDeleting ? 500 : 2000;
+
+    const handleTyping = () => {
+      if (!isDeleting) {
+        if (typewriterText.length < currentPhrase.length) {
+          setTypewriterText(currentPhrase.substring(0, typewriterText.length + 1));
+        } else {
+          setTimeout(() => setIsDeleting(true), pauseTime);
+        }
+      } else {
+        if (typewriterText.length > 0) {
+          setTypewriterText(currentPhrase.substring(0, typewriterText.length - 1));
+        } else {
+          setIsDeleting(false);
+          setCurrentPhraseIndex((prevIndex) => (prevIndex + 1) % phrases.length);
+        }
+      }
+    };
+
+    const timer = setTimeout(handleTyping, typingSpeed);
+    return () => clearTimeout(timer);
+  }, [typewriterText, isDeleting, currentPhraseIndex]);
+
   return (
     <section
       id="home"
@@ -51,10 +89,25 @@ const Hero = () => {
             lineHeight: '1.1',
           }}
         >
-          Transforming Strategy
+          Expert in
           <br />
-          <span style={{ color: '#666' }}>Through Data & Insight</span>
+          <span style={{ color: '#1F4279', minHeight: '1.2em', display: 'inline-block' }}>
+            {typewriterText}
+            <span style={{ 
+              borderRight: '3px solid #1F4279', 
+              animation: 'blink 1s step-end infinite',
+              marginLeft: '2px'
+            }}>|</span>
+          </span>
         </h1>
+        <style>
+          {`
+            @keyframes blink {
+              0%, 50% { opacity: 1; }
+              51%, 100% { opacity: 0; }
+            }
+          `}
+        </style>
         <p
           style={{
             fontSize: 'clamp(1.1rem, 2vw, 1.3rem)',

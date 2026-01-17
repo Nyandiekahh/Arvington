@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import Hero from '../components/Hero';
 import QuoteSection from '../components/QuoteSection';
 import TestimonialCard from '../components/TestimonialCard';
-import { Target, TrendingUp, Users, Globe, ArrowRight, BookOpen, Award } from 'lucide-react';
+import DataSimulation from '../components/DataSimulation';
+import { Target, TrendingUp, Users, Globe, ArrowRight, BookOpen, Award, BarChart3, Lightbulb, Shield, CheckCircle, Building2, Briefcase } from 'lucide-react';
 
 const HomePage = () => {
   const highlights = [
@@ -56,6 +57,238 @@ const HomePage = () => {
   return (
     <div>
       <Hero />
+
+      <DataSimulation />
+
+      {/* Our Impact Section */}
+      <section style={{ padding: '6rem 2rem', backgroundColor: '#f8f9fa' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+          <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+            <h2
+              style={{
+                fontSize: 'clamp(2rem, 4vw, 3rem)',
+                fontWeight: '700',
+                color: '#1a1a1a',
+                marginBottom: '1rem',
+                letterSpacing: '-1px',
+              }}
+            >
+              Our Impact in Numbers
+            </h2>
+            <p
+              style={{
+                fontSize: '1.1rem',
+                color: '#6a6a6a',
+                maxWidth: '750px',
+                margin: '0 auto',
+                lineHeight: '1.7',
+              }}
+            >
+              Delivering measurable results across Africa through strategic excellence and data-driven insights.
+            </p>
+          </div>
+
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+              gap: '3rem',
+              textAlign: 'center',
+            }}
+          >
+            {[
+              { number: '50+', label: 'Projects Completed', icon: <Briefcase size={40} /> },
+              { number: '15+', label: 'Countries Served', icon: <Globe size={40} /> },
+              { number: '100M+', label: 'USD in Policy Impact', icon: <TrendingUp size={40} /> },
+              { number: '30+', label: 'Partner Organizations', icon: <Building2 size={40} /> },
+            ].map((stat, index) => (
+              <div
+                key={index}
+                style={{
+                  padding: '2rem',
+                  backgroundColor: 'white',
+                  borderRadius: '12px',
+                  border: '1px solid #e5e5e5',
+                  transition: 'transform 0.3s ease',
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-5px)'}
+                onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}
+              >
+                <div style={{ color: '#1F4279', marginBottom: '1rem', display: 'flex', justifyContent: 'center' }}>
+                  {stat.icon}
+                </div>
+                <div
+                  style={{
+                    fontSize: '3rem',
+                    fontWeight: '700',
+                    color: '#1a1a1a',
+                    marginBottom: '0.5rem',
+                  }}
+                >
+                  {stat.number}
+                </div>
+                <div
+                  style={{
+                    fontSize: '1rem',
+                    color: '#6a6a6a',
+                    fontWeight: '500',
+                  }}
+                >
+                  {stat.label}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Core Services Overview */}
+      <section style={{ padding: '6rem 2rem', backgroundColor: '#ffffff' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+          <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+            <h2
+              style={{
+                fontSize: 'clamp(2rem, 4vw, 3rem)',
+                fontWeight: '700',
+                color: '#1a1a1a',
+                marginBottom: '1rem',
+                letterSpacing: '-1px',
+              }}
+            >
+              What We Offer
+            </h2>
+            <p
+              style={{
+                fontSize: '1.1rem',
+                color: '#6a6a6a',
+                maxWidth: '750px',
+                margin: '0 auto',
+                lineHeight: '1.7',
+              }}
+            >
+              Comprehensive advisory services designed to transform challenges into opportunities for sustainable growth.
+            </p>
+          </div>
+
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+              gap: '2rem',
+            }}
+          >
+            {[
+              {
+                icon: <Target size={36} />,
+                title: 'Strategic Planning',
+                description: 'Develop comprehensive strategies aligned with your organizational goals and market realities.',
+                features: ['Theory of Change', 'Strategic Frameworks', 'Implementation Roadmaps'],
+              },
+              {
+                icon: <BarChart3 size={36} />,
+                title: 'Policy Analysis',
+                description: 'Evidence-based policy formulation and analysis to drive informed decision-making.',
+                features: ['Policy Research', 'Impact Assessment', 'Stakeholder Analysis'],
+              },
+              {
+                icon: <Lightbulb size={36} />,
+                title: 'Technoeconomic Analysis',
+                description: 'Rigorous financial and technical feasibility studies for complex projects.',
+                features: ['Cost-Benefit Analysis', 'Risk Assessment', 'Market Analysis'],
+              },
+            ].map((service, index) => (
+              <div
+                key={index}
+                style={{
+                  backgroundColor: '#fafafa',
+                  padding: '2.5rem',
+                  borderRadius: '12px',
+                  border: '1px solid #e5e5e5',
+                  transition: 'all 0.3s ease',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-5px)';
+                  e.currentTarget.style.borderColor = '#1F4279';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.borderColor = '#e5e5e5';
+                }}
+              >
+                <div style={{ color: '#1F4279', marginBottom: '1.5rem' }}>
+                  {service.icon}
+                </div>
+                <h3
+                  style={{
+                    fontSize: '1.5rem',
+                    fontWeight: '600',
+                    color: '#1a1a1a',
+                    marginBottom: '1rem',
+                  }}
+                >
+                  {service.title}
+                </h3>
+                <p
+                  style={{
+                    fontSize: '1rem',
+                    color: '#6a6a6a',
+                    lineHeight: '1.7',
+                    marginBottom: '1.5rem',
+                  }}
+                >
+                  {service.description}
+                </p>
+                <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                  {service.features.map((feature, idx) => (
+                    <li
+                      key={idx}
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.5rem',
+                        marginBottom: '0.75rem',
+                        fontSize: '0.95rem',
+                        color: '#4a4a4a',
+                      }}
+                    >
+                      <CheckCircle size={16} style={{ color: '#007A33', flexShrink: 0 }} />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+
+          <div style={{ textAlign: 'center', marginTop: '3rem' }}>
+            <Link
+              to="/services"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                padding: '1rem 2rem',
+                backgroundColor: '#1a1a1a',
+                color: 'white',
+                borderRadius: '8px',
+                fontSize: '1rem',
+                fontWeight: '600',
+                transition: 'all 0.3s ease',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = '#333';
+                e.currentTarget.style.transform = 'translateY(-2px)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = '#1a1a1a';
+                e.currentTarget.style.transform = 'translateY(0)';
+              }}
+            >
+              View All Services <ArrowRight size={18} />
+            </Link>
+          </div>
+        </div>
+      </section>
 
       {/* Why Choose Arvington */}
       <section style={{ padding: '6rem 2rem', backgroundColor: '#ffffff' }}>
@@ -149,6 +382,148 @@ const HomePage = () => {
         author="Seth Kipsang Mutuba"
         role="Founder & CEO, Arvington Limited"
       />
+
+      {/* Sector Expertise */}
+      <section style={{ padding: '6rem 2rem', backgroundColor: '#ffffff' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+          <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+            <h2
+              style={{
+                fontSize: 'clamp(2rem, 4vw, 3rem)',
+                fontWeight: '700',
+                color: '#1a1a1a',
+                marginBottom: '1rem',
+                letterSpacing: '-1px',
+              }}
+            >
+              Sector Expertise
+            </h2>
+            <p
+              style={{
+                fontSize: '1.1rem',
+                color: '#6a6a6a',
+                maxWidth: '750px',
+                margin: '0 auto',
+                lineHeight: '1.7',
+              }}
+            >
+              Deep domain knowledge across critical sectors driving Africa's development agenda.
+            </p>
+          </div>
+
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+              gap: '2rem',
+            }}
+          >
+            {[
+              {
+                title: 'Health & Social Protection',
+                description: 'Healthcare financing, universal health coverage, and social safety nets.',
+                color: '#007A33',
+              },
+              {
+                title: 'Energy & Climate',
+                description: 'Renewable energy transitions, climate policy, and sustainable infrastructure.',
+                color: '#1F4279',
+              },
+              {
+                title: 'Economic Development',
+                description: 'Trade policy, industrialization strategies, and economic transformation.',
+                color: '#D4AF37',
+              },
+              {
+                title: 'Education & Skills',
+                description: 'Education reform, workforce development, and human capital strategies.',
+                color: '#8B4513',
+              },
+              {
+                title: 'Agriculture & Food Security',
+                description: 'Agricultural productivity, value chains, and food systems transformation.',
+                color: '#228B22',
+              },
+              {
+                title: 'Governance & Public Sector',
+                description: 'Public sector reform, institutional strengthening, and governance systems.',
+                color: '#4B0082',
+              },
+            ].map((sector, index) => (
+              <div
+                key={index}
+                style={{
+                  backgroundColor: 'white',
+                  padding: '2rem',
+                  borderRadius: '12px',
+                  border: '2px solid #e5e5e5',
+                  borderLeftColor: sector.color,
+                  borderLeftWidth: '4px',
+                  transition: 'all 0.3s ease',
+                  cursor: 'pointer',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateX(5px)';
+                  e.currentTarget.style.boxShadow = '0 5px 20px rgba(0,0,0,0.1)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateX(0)';
+                  e.currentTarget.style.boxShadow = 'none';
+                }}
+              >
+                <h3
+                  style={{
+                    fontSize: '1.3rem',
+                    fontWeight: '600',
+                    color: '#1a1a1a',
+                    marginBottom: '1rem',
+                  }}
+                >
+                  {sector.title}
+                </h3>
+                <p
+                  style={{
+                    fontSize: '1rem',
+                    color: '#6a6a6a',
+                    lineHeight: '1.6',
+                  }}
+                >
+                  {sector.description}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <div style={{ textAlign: 'center', marginTop: '3rem' }}>
+            <Link
+              to="/expertise"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                padding: '1rem 2rem',
+                backgroundColor: 'transparent',
+                color: '#1a1a1a',
+                border: '2px solid #1a1a1a',
+                borderRadius: '8px',
+                fontSize: '1rem',
+                fontWeight: '600',
+                transition: 'all 0.3s ease',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = '#1a1a1a';
+                e.currentTarget.style.color = 'white';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = 'transparent';
+                e.currentTarget.style.color = '#1a1a1a';
+              }}
+            >
+              Explore Our Expertise <ArrowRight size={18} />
+            </Link>
+          </div>
+        </div>
+      </section>
 
       {/* Featured Insights */}
       <section style={{ padding: '6rem 2rem', backgroundColor: '#ffffff' }}>

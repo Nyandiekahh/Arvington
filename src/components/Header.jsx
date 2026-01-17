@@ -53,13 +53,23 @@ const Header = () => {
         <Link
           to="/"
           style={{
-            fontSize: '1.4rem',
-            fontWeight: '700',
-            color: '#1a1a1a',
-            letterSpacing: '-0.5px',
+            display: 'flex',
+            alignItems: 'center',
           }}
         >
-          Arvington Limited
+          <video 
+            autoPlay 
+            loop 
+            muted 
+            playsInline
+            style={{
+              height: '60px',
+              width: 'auto',
+              pointerEvents: 'none',
+            }}
+          >
+            <source src="/Animated Preloader.mp4" type="video/mp4" />
+          </video>
         </Link>
 
         <ul
