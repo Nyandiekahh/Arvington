@@ -1,31 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import { BarChart3, TrendingUp, PieChart, Activity } from 'lucide-react';
 
+const codeSteps = [
+  "import pandas as pd",
+  "import numpy as np",
+  "from analysis import PolicyImpact",
+  "",
+  "# Load healthcare data",
+  "data = pd.read_csv('health_data.csv')",
+  "",
+  "# Calculate impact metrics",
+  "impact = PolicyImpact.analyze(data)",
+  "coverage = impact.universal_coverage()",
+  "",
+  "# Generate insights",
+  "results = {",
+  "  'coverage_increase': '+23%',",
+  "  'cost_reduction': '-15%',",
+  "  'beneficiaries': '2.5M'",
+  "}",
+];
+
 const DataSimulation = () => {
   const [activeStep, setActiveStep] = useState(0);
   const [codeLines, setCodeLines] = useState([]);
   const [showGraphs, setShowGraphs] = useState(false);
   const [graphProgress, setGraphProgress] = useState(0);
-
-  const codeSteps = [
-    "import pandas as pd",
-    "import numpy as np",
-    "from analysis import PolicyImpact",
-    "",
-    "# Load healthcare data",
-    "data = pd.read_csv('health_data.csv')",
-    "",
-    "# Calculate impact metrics",
-    "impact = PolicyImpact.analyze(data)",
-    "coverage = impact.universal_coverage()",
-    "",
-    "# Generate insights",
-    "results = {",
-    "  'coverage_increase': '+23%',",
-    "  'cost_reduction': '-15%',",
-    "  'beneficiaries': '2.5M'",
-    "}",
-  ];
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -51,15 +51,17 @@ const DataSimulation = () => {
 
   // Reset animation
   useEffect(() => {
-    const resetTimer = setTimeout(() => {
-      setActiveStep(0);
-      setCodeLines([]);
-      setShowGraphs(false);
-      setGraphProgress(0);
-    }, 12000);
+    if (activeStep === codeSteps.length && showGraphs && graphProgress === 100) {
+      const resetTimer = setTimeout(() => {
+        setActiveStep(0);
+        setCodeLines([]);
+        setShowGraphs(false);
+        setGraphProgress(0);
+      }, 12000);
 
-    return () => clearTimeout(resetTimer);
-  }, [activeStep === codeSteps.length && showGraphs]);
+      return () => clearTimeout(resetTimer);
+    }
+  }, [activeStep, showGraphs, graphProgress]);
 
   return (
     <section style={{ padding: '6rem 2rem', backgroundColor: '#f8f9fa', color: '#1a1a1a', overflow: 'hidden' }}>

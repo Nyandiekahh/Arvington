@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 const Preloader = ({ onLoadingComplete }) => {
-  const [isVideoEnded, setIsVideoEnded] = useState(false);
   const [fadeOut, setFadeOut] = useState(false);
 
   const handleVideoEnd = () => {
-    setIsVideoEnded(true);
     setFadeOut(true);
     setTimeout(() => {
       onLoadingComplete();

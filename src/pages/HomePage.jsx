@@ -4,7 +4,7 @@ import Hero from '../components/Hero';
 import QuoteSection from '../components/QuoteSection';
 import TestimonialCard from '../components/TestimonialCard';
 import DataSimulation from '../components/DataSimulation';
-import { Target, TrendingUp, Users, Globe, ArrowRight, BookOpen, Award, BarChart3, Lightbulb, Shield, CheckCircle, Building2, Briefcase } from 'lucide-react';
+import { Target, TrendingUp, Users, Globe, ArrowRight, BookOpen, Award, BarChart3, Lightbulb, CheckCircle, Building2, Briefcase } from 'lucide-react';
 
 const HomePage = () => {
   const highlights = [

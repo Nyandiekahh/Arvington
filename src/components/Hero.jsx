@@ -2,18 +2,18 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, TrendingUp } from 'lucide-react';
 
+const phrases = [
+  'Strategic Planning',
+  'Data-Driven Policy',
+  'Technoeconomic Analysis',
+  'Impact Evaluation',
+  'Evidence-Based Solutions',
+];
+
 const Hero = () => {
   const [typewriterText, setTypewriterText] = useState('');
   const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
-
-  const phrases = [
-    'Strategic Planning',
-    'Data-Driven Policy',
-    'Technoeconomic Analysis',
-    'Impact Evaluation',
-    'Evidence-Based Solutions',
-  ];
 
   useEffect(() => {
     const currentPhrase = phrases[currentPhraseIndex];
